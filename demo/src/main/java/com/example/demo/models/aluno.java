@@ -12,26 +12,26 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "aluno")
-public class aluno {
+public class Aluno {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "id")
 private Integer id;
 
-@Column(name = "aluno")
+@Column(name = "nome")
 private String nome;
 
-@Column(name =  "dataNascimento")
+@Column(name =  "data_Nascimento")
 private LocalDate dataNascimento;
 
 @Column(name = "email")
 private String email;
 
-public aluno() {
+public Aluno() {
 }
 
-public aluno(Integer id, String nome, LocalDate dataNascimento, String email) {
+public Aluno(Integer id, String nome, LocalDate dataNascimento, String email) {
     this.id = id;
     this.nome = nome;
     this.dataNascimento = dataNascimento;

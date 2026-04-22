@@ -5,7 +5,10 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,20 +16,21 @@ import jakarta.persistence.Table;
 public class turma {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name =  "id")
     private Integer id;
     
     @Column(name = "nome")
     private String nome;
     
-    @Column(name = "alunos")
-    private List <aluno> alunos;
+    @OneToMany
+    @JoinColumn(name = "id_turma")
+    private List <Aluno> alunos;
 
     public turma() {
     }
 
-    public turma(Integer id, String nome, List<aluno> alunos) {
+    public turma(Integer id, String nome, List<Aluno> alunos) {
         this.id = id;
         this.nome = nome;
         this.alunos = alunos;
@@ -48,11 +52,11 @@ public class turma {
         this.nome = nome;
     }
 
-    public List<aluno> getAlunos() {
+    public List<Aluno> getAlunos() {
         return alunos;
     }
 
-    public void setAlunos(List<aluno> alunos) {
+    public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
 
